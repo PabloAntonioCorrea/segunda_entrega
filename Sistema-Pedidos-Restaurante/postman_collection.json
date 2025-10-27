@@ -1,0 +1,284 @@
+{
+  "info": {
+    "name": "Sistema Pedidos Restaurante",
+    "description": "Coleção de endpoints para teste do sistema de pedidos de restaurante",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Criar Cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao.silva@email.com\",\n  \"telefone\": \"(11) 99999-1111\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["clientes"]
+            }
+          }
+        },
+        {
+          "name": "Listar Clientes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["clientes"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Cliente por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva Santos\",\n  \"email\": \"joao.santos@email.com\",\n  \"telefone\": \"(11) 99999-1111\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Excluir Cliente",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Garçons",
+      "item": [
+        {
+          "name": "Criar Garçom",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Carlos Mendes\",\n  \"matricula\": \"GAR0001\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/garcons",
+              "host": ["{{base_url}}"],
+              "path": ["garcons"]
+            }
+          }
+        },
+        {
+          "name": "Listar Garçons",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/garcons",
+              "host": ["{{base_url}}"],
+              "path": ["garcons"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Garçom por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/garcons/1",
+              "host": ["{{base_url}}"],
+              "path": ["garcons", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pratos",
+      "item": [
+        {
+          "name": "Criar Prato",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Pizza Margherita\",\n  \"preco\": 45.90\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pratos",
+              "host": ["{{base_url}}"],
+              "path": ["pratos"]
+            }
+          }
+        },
+        {
+          "name": "Listar Pratos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pratos",
+              "host": ["{{base_url}}"],
+              "path": ["pratos"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Pratos por Nome",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pratos/buscar?nome=pizza",
+              "host": ["{{base_url}}"],
+              "path": ["pratos", "buscar"],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "pizza"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Criar Pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": 1,\n  \"garcomId\": 1,\n  \"itens\": [\n    {\n      \"pratoId\": 1,\n      \"quantidade\": 2\n    },\n    {\n      \"pratoId\": 2,\n      \"quantidade\": 1\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos"]
+            }
+          }
+        },
+        {
+          "name": "Listar Pedidos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Pedido por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pedidos/1",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Pedidos por Status",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/pedidos/status/EM_ABERTO",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos", "status", "EM_ABERTO"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Status do Pedido",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "{{base_url}}/pedidos/1/status?status=EM_PREPARACAO",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos", "1", "status"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "EM_PREPARACAO"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancelar Pedido",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "{{base_url}}/pedidos/1/cancelar",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos", "1", "cancelar"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080/sistema-pedidos"
+    }
+  ]
+}
