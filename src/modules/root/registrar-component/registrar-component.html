@@ -1,0 +1,28 @@
+<div class="d-flex flex-column align-items-center mb-4">
+  <h2>Registrar</h2>
+  <p>Crie sua conta</p>
+</div>
+
+<form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" autocomplete="email" formControlName="username">
+    <mat-error>
+      Email é obrigatório
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+    <mat-label>Senha</mat-label>
+    <input matInput autocomplete="new-password" type="password" formControlName="password">
+    <mat-error>
+      Senha é obrigatória (mínimo 3 caracteres)
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button type="submit" color="primary" class="w-100">
+    Registrar
+  </button>
+  <div class="text-center">
+    <small>Já tem conta? <a routerLink="/login">Faça login</a></small>
+  </div>
+</form>
+

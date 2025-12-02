@@ -1,0 +1,184 @@
+<div class="d-flex flex-column align-items-center mt-4">
+  <h1>Gestão de Pedidos</h1>
+  <p>Gerencie os pedidos do restaurante aqui.</p>
+</div>
+
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="adicionarPedido()" class="mb-4">
+    <div class="row mb-3">
+      <mat-form-field appearance="outline" class="col-md-6">
+        <mat-label>Cliente</mat-label>
+        <mat-select formControlName="clienteId">
+          <mat-option [value]="null">Selecione um cliente</mat-option>
+          @for (cliente of clientes; track cliente.id) {
+          <mat-option [value]="cliente.id">{{ cliente.nome }}</mat-option>
+          }
+        </mat-select>
+        <mat-error> Cliente é obrigatório </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-md-6">
+        <mat-label>Garçom</mat-label>
+        <mat-select formControlName="garcomId">
+          <mat-option [value]="null">Selecione um garçom</mat-option>
+          @for (garcom of garcons; track garcom.id) {
+          <mat-option [value]="garcom.id"
+            >{{ garcom.nome }} - {{ garcom.matricula }}</mat-option
+          >
+          }
+        </mat-select>
+        <mat-error> Garçom é obrigatório </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formArrayName="itens">
+      <h4>Itens do Pedido</h4>
+      @for (item of itensFormArray.controls; track $index; let i = $index) {
+      <div [formGroupName]="i" class="row mb-3 p-3 border rounded">
+        <mat-form-field appearance="outline" class="col-md-6">
+          <mat-label>Prato</mat-label>
+          <mat-select formControlName="pratoId">
+            <mat-option [value]="null">Selecione um prato</mat-option>
+            @for (prato of pratos; track prato.id) {
+            <mat-option [value]="prato.id"
+              >{{ prato.nome }} - {{ formatarPreco(prato.preco) }}</mat-option
+            >
+            }
+          </mat-select>
+          <mat-error> Prato é obrigatório </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-md-4">
+          <mat-label>Quantidade</mat-label>
+          <input matInput type="number" formControlName="quantidade" min="1" />
+          <mat-error> Quantidade é obrigatória (mínimo 1) </mat-error>
+        </mat-form-field>
+
+        <div class="col-md-2 d-flex align-items-center">
+          @if (itensFormArray.length > 1) {
+          <button
+            mat-icon-button
+            type="button"
+            (click)="removerItem(i)"
+            color="warn"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          }
+        </div>
+      </div>
+      }
+      <button
+        mat-raised-button
+        type="button"
+        (click)="adicionarItem()"
+        class="mb-3 btn-add-item"
+      >
+        <mat-icon>add</mat-icon>
+        Adicionar Item
+      </button>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="btn-create-pedido"
+      >
+        Criar Pedido
+      </button>
+    </div>
+  </form>
+
+  <div class="mb-3">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Filtrar por Status</mat-label>
+          <mat-select
+            [(ngModel)]="statusFiltro"
+            (selectionChange)="filtrarPorStatus()"
+          >
+            <mat-option [value]="null">Todos</mat-option>
+            @for (status of statusOptions; track status) {
+            <mat-option [value]="status"
+              >{{ getStatusLabel(status) }}</mat-option
+            >
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        @if (statusFiltro) {
+        <button mat-button (click)="limparFiltro()">Limpar Filtro</button>
+        }
+      </div>
+    </div>
+  </div>
+
+  @if (dados.length === 0) {
+  <p class="text-center mt-2">Nenhum pedido encontrado.</p>
+  } @else {
+  <table class="table table-responsive table-secondary mt-2">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Garçom</th>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Valor Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (dado of dados; track dado.id) {
+      <tr>
+        <td>{{ dado.id }}</td>
+        <td>{{ dado.cliente.nome }}</td>
+        <td>{{ dado.garcom.nome }}</td>
+        <td>{{ formatarData(dado.data) }}</td>
+        <td>
+          <span [class]="getStatusBadgeClass(dado.status)"
+            >{{ getStatusLabel(dado.status) }}</span
+          >
+        </td>
+        <td>{{ formatarPreco(dado.valorTotal) }}</td>
+        <td class="text-end">
+          @if (dado.status !== StatusPedido.CANCELADO && dado.status !==
+          StatusPedido.ENTREGUE) { @if (dado.status === StatusPedido.EM_ABERTO)
+          {
+          <button
+            mat-button
+            (click)="atualizarStatus(dado.id!, StatusPedido.EM_PREPARACAO)"
+          >
+            Em Preparação
+          </button>
+          } @if (dado.status === StatusPedido.EM_PREPARACAO) {
+          <button
+            mat-button
+            (click)="atualizarStatus(dado.id!, StatusPedido.PRONTO)"
+          >
+            Pronto
+          </button>
+          } @if (dado.status === StatusPedido.PRONTO) {
+          <button
+            mat-button
+            (click)="atualizarStatus(dado.id!, StatusPedido.ENTREGUE)"
+          >
+            Entregue
+          </button>
+          }
+          <button mat-button (click)="cancelarPedido(dado.id!)" color="warn">
+            <mat-icon>cancel</mat-icon>
+            Cancelar
+          </button>
+          }
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+</div>

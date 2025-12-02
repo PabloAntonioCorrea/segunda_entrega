@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <span class="title-large">Sistema de Pedidos - Restaurante</span>
+  <span class="spacer"></span>
+  <span class="me-3">Olá, {{ getUser()?.email || 'Usuário' }}</span>
+  <button mat-icon-button (click)="logout()" matTooltip="Sair">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/home/dashboard" routerLinkActive="active"
+        >Página Inicial</a
+      >
+      <a class="nav-link" routerLink="/home/clientes" routerLinkActive="active"
+        >Clientes</a
+      >
+      <a class="nav-link" routerLink="/home/garcons" routerLinkActive="active"
+        >Garçons</a
+      >
+      <a class="nav-link" routerLink="/home/pratos" routerLinkActive="active"
+        >Pratos</a
+      >
+      <a class="nav-link" routerLink="/home/pedidos" routerLinkActive="active"
+        >Pedidos</a
+      >
+    </div>
+  </div>
+</nav>
+
+<div class="content-wrapper">
+  <div class="content-box">
+    <router-outlet></router-outlet>
+  </div>
+</div>

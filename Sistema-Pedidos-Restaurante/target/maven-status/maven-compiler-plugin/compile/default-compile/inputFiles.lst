@@ -15,12 +15,14 @@ C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\c
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\service\ClienteService.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\controller\PratoController.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\repository\PedidoRepository.java
+C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\controller\AuthController.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\dto\GarcomRequestDTO.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\dto\ItemPedidoResponseDTO.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\controller\GarcomController.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\service\PratoService.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\dto\PedidoResponseDTO.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\config\SwaggerConfig.java
+C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\config\CorsConfig.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\controller\GlobalExceptionHandler.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\dto\PratoRequestDTO.java
 C:\Users\Pablo\Desktop\Projeto POO 2\Sistema-Pedidos-Restaurante\src\main\java\com\restaurante\service\PedidoService.java

@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.success-snackbar {
+  background-color: #4caf50 !important;
+  color: white !important;
+}
+
+.error-snackbar {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+::ng-deep .success-snackbar {
+  background-color: #4caf50 !important;
+  color: white !important;
+}
+
+::ng-deep .error-snackbar {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+button.mat-mdc-raised-button.mat-mdc-raised-button[color="primary"],
+button.mat-mdc-raised-button[color="primary"] {
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 12px !important;
+}
+
+button.mat-mdc-button.mat-mdc-button,
+button.mat-mdc-button {
+  border: 2px solid rgba(102, 126, 234, 0.3) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  margin: 4px !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+button.mat-mdc-button.mat-mdc-button:hover,
+button.mat-mdc-button:hover {
+  border-color: rgba(102, 126, 234, 0.6) !important;
+  background: rgba(102, 126, 234, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+button.mat-mdc-button.mat-mdc-button[color="warn"],
+button.mat-mdc-button[color="warn"] {
+  border-color: rgba(244, 67, 54, 0.3) !important;
+  color: #f44336 !important;
+}
+
+button.mat-mdc-button.mat-mdc-button[color="warn"]:hover,
+button.mat-mdc-button[color="warn"]:hover {
+  border-color: rgba(244, 67, 54, 0.6) !important;
+  background: rgba(244, 67, 54, 0.1) !important;
+}
+
+table.table.table-secondary,
+table.table-secondary.table,
+.table.table-secondary {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.05) 0%,
+    rgba(118, 75, 162, 0.05) 100%
+  ) !important;
+  border: 2px solid rgba(102, 126, 234, 0.2) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background-color: transparent !important;
+}
+
+table.table.table-secondary thead,
+table.table-secondary.table thead,
+.table.table-secondary thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background-color: transparent !important;
+  color: white !important;
+}
+
+table.table.table-secondary thead th,
+table.table-secondary.table thead th,
+.table.table-secondary thead th {
+  background: transparent !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+table.table.table-secondary tbody tr,
+table.table-secondary.table tbody tr,
+.table.table-secondary tbody tr {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+table.table.table-secondary tbody tr:hover,
+table.table-secondary.table tbody tr:hover,
+.table.table-secondary tbody tr:hover {
+  background-color: rgba(102, 126, 234, 0.05) !important;
+  background: rgba(102, 126, 234, 0.05) !important;
+}
